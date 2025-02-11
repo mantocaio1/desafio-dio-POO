@@ -5,25 +5,13 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Bootcamp {
-    private String nome;
-    private String descricao;
+public class Bootcamp extends Conteudo{
+    
     private final LocalDate dataInicial = LocalDate.now();
     private final LocalDate dataFinal = dataInicial.plusDays(45);
     private Set<Dev> devsIncritos = new HashSet<>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public String getDescricao() {
-        return descricao;
-    }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+   
     public LocalDate getDataInicial() {
         return dataInicial;
     }
@@ -46,8 +34,6 @@ public class Bootcamp {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
         result = prime * result + ((dataInicial == null) ? 0 : dataInicial.hashCode());
         result = prime * result + ((dataFinal == null) ? 0 : dataFinal.hashCode());
         result = prime * result + ((devsIncritos == null) ? 0 : devsIncritos.hashCode());
@@ -63,16 +49,6 @@ public class Bootcamp {
         if (getClass() != obj.getClass())
             return false;
         Bootcamp other = (Bootcamp) obj;
-        if (nome == null) {
-            if (other.nome != null)
-                return false;
-        } else if (!nome.equals(other.nome))
-            return false;
-        if (descricao == null) {
-            if (other.descricao != null)
-                return false;
-        } else if (!descricao.equals(other.descricao))
-            return false;
         if (dataInicial == null) {
             if (other.dataInicial != null)
                 return false;
@@ -94,6 +70,10 @@ public class Bootcamp {
         } else if (!conteudos.equals(other.conteudos))
             return false;
         return true;
+    }
+    @Override
+    public double calcularXp() {
+        return XP_PADRAO + 0d;
     }
 
 }
